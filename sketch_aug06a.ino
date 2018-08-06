@@ -31,7 +31,7 @@ void loop() {
   StaticJsonBuffer<300> JSONbuffer;   //Declaring static JSON buffer
   JsonObject& JSONencoder = JSONbuffer.createObject();
 
-  JSONencoder["eventName"] = "Temp_Sensing";
+  JSONencoder["eventName"] = <<Your Event Name>>;
   JSONencoder["status"] = "none";
   JSONencoder["temp"] = String(t);
   JSONencoder["hum"] = String(h);
