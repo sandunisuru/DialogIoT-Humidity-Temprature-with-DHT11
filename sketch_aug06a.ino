@@ -10,7 +10,7 @@ void setup() {
   Serial.begin(115200);                                  //Serial connection
 
   i = 0;
-  WiFi.begin("Morasquad.com", "sandujanitha");   //WiFi connection
+  WiFi.begin("Your SSID", "Your Password");   //WiFi connection
  
   while (WiFi.status() != WL_CONNECTED) {  //Wait for the WiFI connection completion
  
@@ -36,7 +36,7 @@ void loop() {
   JSONencoder["temp"] = String(t);
   JSONencoder["hum"] = String(h);
   JSONencoder["time"] = String(i);
-  JSONencoder["mac"] = "0383686959180194";
+  JSONencoder["mac"] = <<Your Device MAC Address>>; //Obtain from DialogIoT Developer Account
   char JSONmessageBuffer[300];
   JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
   //Serial.println(JSONmessageBuffer);
