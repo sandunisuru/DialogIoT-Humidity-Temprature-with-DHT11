@@ -5,11 +5,9 @@
 #include <ArduinoJson.h>
 
 dht DHT;
-int i;
 void setup() {
   Serial.begin(115200);                                  //Serial connection
 
-  i = 0;
   WiFi.begin("Your SSID", "Your Password");   //WiFi connection
  
   while (WiFi.status() != WL_CONNECTED) {  //Wait for the WiFI connection completion
@@ -35,7 +33,6 @@ void loop() {
   JSONencoder["status"] = "none";
   JSONencoder["temp"] = String(t);
   JSONencoder["hum"] = String(h);
-  JSONencoder["time"] = String(i);
   JSONencoder["mac"] = <<Your Device MAC Address>>; //Obtain from DialogIoT Developer Account
   char JSONmessageBuffer[300];
   JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
@@ -48,7 +45,6 @@ void loop() {
    http.addHeader("Content-Type", "application/json");  //Specify content-type header
  
    int httpCode = http.POST(JSONmessageBuffer);//Send the request
-   i++;
    String payload = http.getString();                  //Get the response payload
 
 
